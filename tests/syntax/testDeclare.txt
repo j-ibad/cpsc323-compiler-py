@@ -1,0 +1,5 @@
+! Declarative statements !
+! 	Single Declaration !
+int num001;
+! 	Multiple Declaration !
+float fl001, flag001;

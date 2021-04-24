@@ -1,0 +1,6 @@
+! Find the sum between two numbers!
+int num, nu2m, sum;
+num = 0;
+nu2m = 15;
+sum = 0;
+sum = num + nu2m;

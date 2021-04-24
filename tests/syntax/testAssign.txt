@@ -1,0 +1,9 @@
+! Assignment statements !
+! 	Simple assignments !
+num001 = 1;
+num002 = 99;
+fl001 = 1.0;
+fl002 = 98.765;
+flag001 = False;
+flag002 = True;
+

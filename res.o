@@ -1,0 +1,610 @@
+[---Analysis of "tests/testArith.txt"---]
+
+
+Token:	IDENTIFIER @   3,1    Lexeme:	x
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   3,2    Lexeme:	=
+Token:	IDENTIFIER @   3,3    Lexeme:	a
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @   3,5    Lexeme:	+
+Token:	IDENTIFIER @   3,7    Lexeme:	b
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   3,8    Lexeme:	;
+
+Token:	IDENTIFIER @   4,1    Lexeme:	z
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   4,2    Lexeme:	=
+Token:	IDENTIFIER @   4,3    Lexeme:	c
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @   4,4    Lexeme:	+
+Token:	IDENTIFIER @   4,6    Lexeme:	d
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   4,7    Lexeme:	;
+
+Token:	IDENTIFIER @   5,1    Lexeme:	a
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   5,2    Lexeme:	=
+Token:	IDENTIFIER @   5,3    Lexeme:	e
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @   5,4    Lexeme:	-
+Token:	IDENTIFIER @   5,5    Lexeme:	f
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   5,6    Lexeme:	;
+
+Token:	IDENTIFIER @   6,1    Lexeme:	b
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   6,2    Lexeme:	=
+Token:	IDENTIFIER @   6,3    Lexeme:	g
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @   6,4    Lexeme:	*
+Token:	IDENTIFIER @   6,5    Lexeme:	n
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   6,6    Lexeme:	;
+
+Token:	IDENTIFIER @   7,1    Lexeme:	c
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   7,2    Lexeme:	=
+Token:	IDENTIFIER @   7,3    Lexeme:	d
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @   7,4    Lexeme:	/
+Token:	IDENTIFIER @   7,5    Lexeme:	n
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   7,6    Lexeme:	;
+
+Token:	IDENTIFIER @   9,1    Lexeme:	x
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   9,3    Lexeme:	=
+Token:	INTEGER    @   9,5    Lexeme:	1
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @   9,7    Lexeme:	+
+Token:	INTEGER    @   9,9    Lexeme:	2
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @   9,11   Lexeme:	+
+Token:	INTEGER    @   9,13   Lexeme:	3
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @   9,15   Lexeme:	+
+Token:	INTEGER    @   9,17   Lexeme:	4
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   9,18   Lexeme:	;
+
+Token:	IDENTIFIER @  10,1    Lexeme:	y
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @  10,3    Lexeme:	=
+Token:	IDENTIFIER @  10,5    Lexeme:	a
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @  10,7    Lexeme:	+
+Token:	IDENTIFIER @  10,9    Lexeme:	b
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @  10,11   Lexeme:	/
+Token:	IDENTIFIER @  10,13   Lexeme:	c
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @  10,15   Lexeme:	-
+Token:	INTEGER    @  10,17   Lexeme:	1
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @  10,19   Lexeme:	*
+Token:	INTEGER    @  10,21   Lexeme:	2
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @  10,22   Lexeme:	;
+
+Token:	IDENTIFIER @  11,1    Lexeme:	z
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @  11,3    Lexeme:	=
+Token:	SEPARATOR  @  11,5    Lexeme:	(
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	IDENTIFIER @  11,6    Lexeme:	a
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @  11,8    Lexeme:	+
+Token:	IDENTIFIER @  11,10   Lexeme:	b
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @  11,11   Lexeme:	)
+Token:	OPERATOR   @  11,13   Lexeme:	/
+Token:	SEPARATOR  @  11,15   Lexeme:	(
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	IDENTIFIER @  11,16   Lexeme:	c
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @  11,18   Lexeme:	-
+Token:	IDENTIFIER @  11,20   Lexeme:	d
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	OPERATOR   @  11,22   Lexeme:	*
+Token:	IDENTIFIER @  11,24   Lexeme:	e
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @  11,25   Lexeme:	)
+Token:	SEPARATOR  @  11,26   Lexeme:	;
+
+Printing Parse Tree:
+
+["SL"	height: 0, Children: {
+ ["S"	height: 1, Children: {
+  ["A"	height: 2, Children: {
+   ['IDENTIFIER', 'x', (3, 1)]
+   ['OPERATOR', '=', (3, 2)]
+   ["E"	height: 3, Children: {
+    ["T"	height: 4, Children: {
+     ["F"	height: 5, Children: {
+      ['IDENTIFIER', 'a', (3, 3)]
+     } End of (F, 5)]
+    } End of (T, 4)]
+    ['OPERATOR', '+', (3, 5)]
+    ["E"	height: 4, Children: {
+     ["T"	height: 5, Children: {
+      ["F"	height: 6, Children: {
+       ['IDENTIFIER', 'b', (3, 7)]
+      } End of (F, 6)]
+     } End of (T, 5)]
+    } End of (E, 4)]
+   } End of (E, 3)]
+  } End of (A, 2)]
+ } End of (S, 1)]
+ ['SEPARATOR', ';', (3, 8)]
+ ["SL"	height: 1, Children: {
+  ["S"	height: 2, Children: {
+   ["A"	height: 3, Children: {
+    ['IDENTIFIER', 'z', (4, 1)]
+    ['OPERATOR', '=', (4, 2)]
+    ["E"	height: 4, Children: {
+     ["T"	height: 5, Children: {
+      ["F"	height: 6, Children: {
+       ['IDENTIFIER', 'c', (4, 3)]
+      } End of (F, 6)]
+     } End of (T, 5)]
+     ['OPERATOR', '+', (4, 4)]
+     ["E"	height: 5, Children: {
+      ["T"	height: 6, Children: {
+       ["F"	height: 7, Children: {
+        ['IDENTIFIER', 'd', (4, 6)]
+       } End of (F, 7)]
+      } End of (T, 6)]
+     } End of (E, 5)]
+    } End of (E, 4)]
+   } End of (A, 3)]
+  } End of (S, 2)]
+  ['SEPARATOR', ';', (4, 7)]
+  ["SL"	height: 2, Children: {
+   ["S"	height: 3, Children: {
+    ["A"	height: 4, Children: {
+     ['IDENTIFIER', 'a', (5, 1)]
+     ['OPERATOR', '=', (5, 2)]
+     ["E"	height: 5, Children: {
+      ["T"	height: 6, Children: {
+       ["F"	height: 7, Children: {
+        ['IDENTIFIER', 'e', (5, 3)]
+       } End of (F, 7)]
+      } End of (T, 6)]
+      ['OPERATOR', '-', (5, 4)]
+      ["E"	height: 6, Children: {
+       ["T"	height: 7, Children: {
+        ["F"	height: 8, Children: {
+         ['IDENTIFIER', 'f', (5, 5)]
+        } End of (F, 8)]
+       } End of (T, 7)]
+      } End of (E, 6)]
+     } End of (E, 5)]
+    } End of (A, 4)]
+   } End of (S, 3)]
+   ['SEPARATOR', ';', (5, 6)]
+   ["SL"	height: 3, Children: {
+    ["S"	height: 4, Children: {
+     ["A"	height: 5, Children: {
+      ['IDENTIFIER', 'b', (6, 1)]
+      ['OPERATOR', '=', (6, 2)]
+      ["E"	height: 6, Children: {
+       ["T"	height: 7, Children: {
+        ["F"	height: 8, Children: {
+         ['IDENTIFIER', 'g', (6, 3)]
+        } End of (F, 8)]
+        ['OPERATOR', '*', (6, 4)]
+        ["T"	height: 8, Children: {
+         ["F"	height: 9, Children: {
+          ['IDENTIFIER', 'n', (6, 5)]
+         } End of (F, 9)]
+        } End of (T, 8)]
+       } End of (T, 7)]
+      } End of (E, 6)]
+     } End of (A, 5)]
+    } End of (S, 4)]
+    ['SEPARATOR', ';', (6, 6)]
+    ["SL"	height: 4, Children: {
+     ["S"	height: 5, Children: {
+      ["A"	height: 6, Children: {
+       ['IDENTIFIER', 'c', (7, 1)]
+       ['OPERATOR', '=', (7, 2)]
+       ["E"	height: 7, Children: {
+        ["T"	height: 8, Children: {
+         ["F"	height: 9, Children: {
+          ['IDENTIFIER', 'd', (7, 3)]
+         } End of (F, 9)]
+         ['OPERATOR', '/', (7, 4)]
+         ["T"	height: 9, Children: {
+          ["F"	height: 10, Children: {
+           ['IDENTIFIER', 'n', (7, 5)]
+          } End of (F, 10)]
+         } End of (T, 9)]
+        } End of (T, 8)]
+       } End of (E, 7)]
+      } End of (A, 6)]
+     } End of (S, 5)]
+     ['SEPARATOR', ';', (7, 6)]
+     ["SL"	height: 5, Children: {
+      ["S"	height: 6, Children: {
+       ["A"	height: 7, Children: {
+        ['IDENTIFIER', 'x', (9, 1)]
+        ['OPERATOR', '=', (9, 3)]
+        ["E"	height: 8, Children: {
+         ["T"	height: 9, Children: {
+          ["F"	height: 10, Children: {
+           ['INTEGER', '1', (9, 5)]
+          } End of (F, 10)]
+         } End of (T, 9)]
+         ['OPERATOR', '+', (9, 7)]
+         ["E"	height: 9, Children: {
+          ["T"	height: 10, Children: {
+           ["F"	height: 11, Children: {
+            ['INTEGER', '2', (9, 9)]
+           } End of (F, 11)]
+          } End of (T, 10)]
+          ['OPERATOR', '+', (9, 11)]
+          ["E"	height: 10, Children: {
+           ["T"	height: 11, Children: {
+            ["F"	height: 12, Children: {
+             ['INTEGER', '3', (9, 13)]
+            } End of (F, 12)]
+           } End of (T, 11)]
+           ['OPERATOR', '+', (9, 15)]
+           ["E"	height: 11, Children: {
+            ["T"	height: 12, Children: {
+             ["F"	height: 13, Children: {
+              ['INTEGER', '4', (9, 17)]
+             } End of (F, 13)]
+            } End of (T, 12)]
+           } End of (E, 11)]
+          } End of (E, 10)]
+         } End of (E, 9)]
+        } End of (E, 8)]
+       } End of (A, 7)]
+      } End of (S, 6)]
+      ['SEPARATOR', ';', (9, 18)]
+      ["SL"	height: 6, Children: {
+       ["S"	height: 7, Children: {
+        ["A"	height: 8, Children: {
+         ['IDENTIFIER', 'y', (10, 1)]
+         ['OPERATOR', '=', (10, 3)]
+         ["E"	height: 9, Children: {
+          ["T"	height: 10, Children: {
+           ["F"	height: 11, Children: {
+            ['IDENTIFIER', 'a', (10, 5)]
+           } End of (F, 11)]
+          } End of (T, 10)]
+          ['OPERATOR', '+', (10, 7)]
+          ["E"	height: 10, Children: {
+           ["T"	height: 11, Children: {
+            ["F"	height: 12, Children: {
+             ['IDENTIFIER', 'b', (10, 9)]
+            } End of (F, 12)]
+            ['OPERATOR', '/', (10, 11)]
+            ["T"	height: 12, Children: {
+             ["F"	height: 13, Children: {
+              ['IDENTIFIER', 'c', (10, 13)]
+             } End of (F, 13)]
+            } End of (T, 12)]
+           } End of (T, 11)]
+           ['OPERATOR', '-', (10, 15)]
+           ["E"	height: 11, Children: {
+            ["T"	height: 12, Children: {
+             ["F"	height: 13, Children: {
+              ['INTEGER', '1', (10, 17)]
+             } End of (F, 13)]
+             ['OPERATOR', '*', (10, 19)]
+             ["T"	height: 13, Children: {
+              ["F"	height: 14, Children: {
+               ['INTEGER', '2', (10, 21)]
+              } End of (F, 14)]
+             } End of (T, 13)]
+            } End of (T, 12)]
+           } End of (E, 11)]
+          } End of (E, 10)]
+         } End of (E, 9)]
+        } End of (A, 8)]
+       } End of (S, 7)]
+       ['SEPARATOR', ';', (10, 22)]
+       ["SL"	height: 7, Children: {
+        ["S"	height: 8, Children: {
+         ["A"	height: 9, Children: {
+          ['IDENTIFIER', 'z', (11, 1)]
+          ['OPERATOR', '=', (11, 3)]
+          ["E"	height: 10, Children: {
+           ["T"	height: 11, Children: {
+            ["F"	height: 12, Children: {
+             ['SEPARATOR', '(', (11, 5)]
+             ["E"	height: 13, Children: {
+              ["T"	height: 14, Children: {
+               ["F"	height: 15, Children: {
+                ['IDENTIFIER', 'a', (11, 6)]
+               } End of (F, 15)]
+              } End of (T, 14)]
+              ['OPERATOR', '+', (11, 8)]
+              ["E"	height: 14, Children: {
+               ["T"	height: 15, Children: {
+                ["F"	height: 16, Children: {
+                 ['IDENTIFIER', 'b', (11, 10)]
+                } End of (F, 16)]
+               } End of (T, 15)]
+              } End of (E, 14)]
+             } End of (E, 13)]
+             ['SEPARATOR', ')', (11, 11)]
+            } End of (F, 12)]
+            ['OPERATOR', '/', (11, 13)]
+            ["T"	height: 12, Children: {
+             ["F"	height: 13, Children: {
+              ['SEPARATOR', '(', (11, 15)]
+              ["E"	height: 14, Children: {
+               ["T"	height: 15, Children: {
+                ["F"	height: 16, Children: {
+                 ['IDENTIFIER', 'c', (11, 16)]
+                } End of (F, 16)]
+               } End of (T, 15)]
+               ['OPERATOR', '-', (11, 18)]
+               ["E"	height: 15, Children: {
+                ["T"	height: 16, Children: {
+                 ["F"	height: 17, Children: {
+                  ['IDENTIFIER', 'd', (11, 20)]
+                 } End of (F, 17)]
+                 ['OPERATOR', '*', (11, 22)]
+                 ["T"	height: 17, Children: {
+                  ["F"	height: 18, Children: {
+                   ['IDENTIFIER', 'e', (11, 24)]
+                  } End of (F, 18)]
+                 } End of (T, 17)]
+                } End of (T, 16)]
+               } End of (E, 15)]
+              } End of (E, 14)]
+              ['SEPARATOR', ')', (11, 25)]
+             } End of (F, 13)]
+            } End of (T, 12)]
+           } End of (T, 11)]
+          } End of (E, 10)]
+         } End of (A, 9)]
+        } End of (S, 8)]
+        ['SEPARATOR', ';', (11, 26)]
+       } End of (SL, 7)]
+      } End of (SL, 6)]
+     } End of (SL, 5)]
+    } End of (SL, 4)]
+   } End of (SL, 3)]
+  } End of (SL, 2)]
+ } End of (SL, 1)]
+} End of (SL, 0)]
+
+[---Successful end of "tests/testArith.txt"---]
+
+[---Analysis of "tests/testAssign.txt"---]
+
+
+Token:	IDENTIFIER @   3,1    Lexeme:	num001
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   3,8    Lexeme:	=
+Token:	INTEGER    @   3,10   Lexeme:	1
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   3,11   Lexeme:	;
+
+Token:	IDENTIFIER @   4,1    Lexeme:	num002
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   4,8    Lexeme:	=
+Token:	INTEGER    @   4,10   Lexeme:	99
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   4,12   Lexeme:	;
+
+Token:	IDENTIFIER @   5,1    Lexeme:	fl001
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   5,7    Lexeme:	=
+Token:	FLOAT      @   5,9    Lexeme:	1.0
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   5,12   Lexeme:	;
+
+Token:	IDENTIFIER @   6,1    Lexeme:	fl002
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   6,7    Lexeme:	=
+Token:	FLOAT      @   6,9    Lexeme:	98.765
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   6,15   Lexeme:	;
+
+Token:	IDENTIFIER @   7,1    Lexeme:	flag001
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   7,9    Lexeme:	=
+Token:	KEYWORD    @   7,11   Lexeme:	False
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   7,16   Lexeme:	;
+
+Token:	IDENTIFIER @   8,1    Lexeme:	flag002
+	<StatementList> -> <Statement> <StatementList> | <empty>
+	<Statement> -> <Assign>
+	<Assign> -> <ID> = <Expression>;
+Token:	OPERATOR   @   8,9    Lexeme:	=
+Token:	KEYWORD    @   8,11   Lexeme:	True
+	<Expression> -> <Term> | <Term> + <Expression> | <Term> - <Expression>
+	<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor>
+	<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'
+Token:	SEPARATOR  @   8,15   Lexeme:	;
+
+Printing Parse Tree:
+
+["SL"	height: 0, Children: {
+ ["S"	height: 1, Children: {
+  ["A"	height: 2, Children: {
+   ['IDENTIFIER', 'num001', (3, 1)]
+   ['OPERATOR', '=', (3, 8)]
+   ["E"	height: 3, Children: {
+    ["T"	height: 4, Children: {
+     ["F"	height: 5, Children: {
+      ['INTEGER', '1', (3, 10)]
+     } End of (F, 5)]
+    } End of (T, 4)]
+   } End of (E, 3)]
+  } End of (A, 2)]
+ } End of (S, 1)]
+ ['SEPARATOR', ';', (3, 11)]
+ ["SL"	height: 1, Children: {
+  ["S"	height: 2, Children: {
+   ["A"	height: 3, Children: {
+    ['IDENTIFIER', 'num002', (4, 1)]
+    ['OPERATOR', '=', (4, 8)]
+    ["E"	height: 4, Children: {
+     ["T"	height: 5, Children: {
+      ["F"	height: 6, Children: {
+       ['INTEGER', '99', (4, 10)]
+      } End of (F, 6)]
+     } End of (T, 5)]
+    } End of (E, 4)]
+   } End of (A, 3)]
+  } End of (S, 2)]
+  ['SEPARATOR', ';', (4, 12)]
+  ["SL"	height: 2, Children: {
+   ["S"	height: 3, Children: {
+    ["A"	height: 4, Children: {
+     ['IDENTIFIER', 'fl001', (5, 1)]
+     ['OPERATOR', '=', (5, 7)]
+     ["E"	height: 5, Children: {
+      ["T"	height: 6, Children: {
+       ["F"	height: 7, Children: {
+        ['FLOAT', '1.0', (5, 9)]
+       } End of (F, 7)]
+      } End of (T, 6)]
+     } End of (E, 5)]
+    } End of (A, 4)]
+   } End of (S, 3)]
+   ['SEPARATOR', ';', (5, 12)]
+   ["SL"	height: 3, Children: {
+    ["S"	height: 4, Children: {
+     ["A"	height: 5, Children: {
+      ['IDENTIFIER', 'fl002', (6, 1)]
+      ['OPERATOR', '=', (6, 7)]
+      ["E"	height: 6, Children: {
+       ["T"	height: 7, Children: {
+        ["F"	height: 8, Children: {
+         ['FLOAT', '98.765', (6, 9)]
+        } End of (F, 8)]
+       } End of (T, 7)]
+      } End of (E, 6)]
+     } End of (A, 5)]
+    } End of (S, 4)]
+    ['SEPARATOR', ';', (6, 15)]
+    ["SL"	height: 4, Children: {
+     ["S"	height: 5, Children: {
+      ["A"	height: 6, Children: {
+       ['IDENTIFIER', 'flag001', (7, 1)]
+       ['OPERATOR', '=', (7, 9)]
+       ["E"	height: 7, Children: {
+        ["T"	height: 8, Children: {
+         ["F"	height: 9, Children: {
+          ['KEYWORD', 'False', (7, 11)]
+         } End of (F, 9)]
+        } End of (T, 8)]
+       } End of (E, 7)]
+      } End of (A, 6)]
+     } End of (S, 5)]
+     ['SEPARATOR', ';', (7, 16)]
+     ["SL"	height: 5, Children: {
+      ["S"	height: 6, Children: {
+       ["A"	height: 7, Children: {
+        ['IDENTIFIER', 'flag002', (8, 1)]
+        ['OPERATOR', '=', (8, 9)]
+        ["E"	height: 8, Children: {
+         ["T"	height: 9, Children: {
+          ["F"	height: 10, Children: {
+           ['KEYWORD', 'True', (8, 11)]
+          } End of (F, 10)]
+         } End of (T, 9)]
+        } End of (E, 8)]
+       } End of (A, 7)]
+      } End of (S, 6)]
+      ['SEPARATOR', ';', (8, 15)]
+     } End of (SL, 5)]
+    } End of (SL, 4)]
+   } End of (SL, 3)]
+  } End of (SL, 2)]
+ } End of (SL, 1)]
+} End of (SL, 0)]
+
+[---Successful end of "tests/testAssign.txt"---]
+

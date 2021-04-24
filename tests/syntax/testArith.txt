@@ -1,0 +1,11 @@
+! Arithmetic Expressions !
+! 	Single op and assignment !
+x=a + b;
+z=c+ d;
+a=e-f;
+b=g*n;
+c=d/n;
+!	Multi op !
+x = 1 + 2 + 3 + 4;
+y = a + b / c - 1 * 2;
+z = (a + b) / (c - d * e);

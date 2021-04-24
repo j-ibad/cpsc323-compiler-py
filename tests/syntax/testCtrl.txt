@@ -1,0 +1,34 @@
+! Control Structures !
+!	If simple conditional without else single statement body !
+if x == y then
+	x = 1;
+endif
+!	If complex conditional without else single statement body !
+if x - 1 > y + 1 then
+	x = 1 + 2;
+endif
+!	If without else with begin end block body !
+if x-1 <= y+1 then begin
+	x = x - 1;
+	y = y + 1;
+end endif
+!	If with else with begin end block body !
+if x >= y then
+	x = y-x;
+else begin
+	x = x-1;
+	y= y+1;
+end endif
+!	While simple condition single statement !
+while x < y do
+	x = x + 1;
+whileend
+!	While complex condition single statement !
+while x-1 < y/x+2 do
+	x = x + 1;
+whileend
+!	While complex condition begin end block body !
+while x-1 < y/x+2 do begin
+	x = x + 1;
+	y = y + 2;
+end whileend

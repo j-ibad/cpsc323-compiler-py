@@ -1,0 +1,19 @@
+! Find largest value between two numbers!
+int num, nu2m, large$;
+num = 0;
+nu2m = 15;
+bool hey;
+hey = True;
+hey = False;
+
+if num > nu2m then
+	large$ = num;
+endif
+
+if num > nu2m then
+	large$ = num;
+else
+	large$ = nu2m;
+endif
+
+hey = True;

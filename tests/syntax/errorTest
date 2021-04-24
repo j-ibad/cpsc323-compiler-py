@@ -1,0 +1,16 @@
+int blah;
+blah = 1 + 2 / 3;
+
+int blah, multiple, blahProper, blahTest;
+
+blahProper = 1 - (2 + 3);
+blahTest = 1 - (2 + 3
+blahProper = 1 + 2 / 3 - 4;
+
+if x == y then blah = 1; endif
+if x <= y then blah = 1; endif
+if x < y then blah = 1; endif
+if x > y then blah = 1; endif
+if x >= y then blah = 1; endif
+if x = y then blah = 1; endif
+if x <> y then blah = 1; endif
