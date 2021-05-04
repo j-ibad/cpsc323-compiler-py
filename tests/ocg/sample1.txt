@@ -1,0 +1,9 @@
+int i, max, sum;
+sum = 0;
+i = 1;
+input ( max);
+while (i < max) do
+	sum = sum + i;
+	i = i + 1;
+whileend
+output (sum + max);
