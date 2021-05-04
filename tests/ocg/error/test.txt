@@ -1,0 +1,14 @@
+int num, num2, num3;
+num = 1;
+
+if(True) then
+	bool num;
+	num = True;
+	bool num2;
+	num2 = True;
+	while(True) do
+		float num;
+		num = 1.0;
+		num3 = 3;
+	whileend
+endif

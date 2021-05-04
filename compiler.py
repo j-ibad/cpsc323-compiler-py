@@ -23,12 +23,12 @@ compilerFirstFile = True
 RELOP_TO_CODE = {">":"GRT", "<":"LES", "==":"EQU", "<>":"NEQ", "<=":"LEQ", ">=":"GEQ"}
 
 class OCG:
-    def __init__(self, fIn, fOut, objectCode=[], symbolTable = {}):
+    def __init__(self, fIn, fOut, objectCode=[], symbolTables = [{}]):
         self.filename = fIn
         self.parseTree = parser.Parser(fIn, os.devnull) #Outfile is null, surpress parser output
         self.parseTree = self.parseTree.parseTree
         self.memoryCounter = VARIABLE_ADDRESS_START
-        self.symbolTable = symbolTable   #Dictionary will have <id>: (<memoryAddress>, <type>)
+        self.symbolTables = symbolTables   #Dictionary will have <id>: (<memoryAddress>, <type>)
         self.realStdOut = sys.stdout
         self.objectCode = objectCode
         #File output
@@ -42,7 +42,7 @@ class OCG:
         
     def close(self):
         sys.stdout = self.realStdOut
-        return (self.objectCode, self.symbolTable)
+        return (self.objectCode, self.symbolTables)
     
     def writeln(self, code):
         self.objectCode.append(code)
@@ -74,6 +74,7 @@ class OCG:
         elif val == 'A':
             self.A(subtree.children[0])
         elif val == 'if':
+            self.symbolTables.append({})
             self.C(subtree.children[1])
             ptr = len(self.objectCode)
             self.SL(subtree.children[3])
@@ -86,7 +87,9 @@ class OCG:
             else:
                 self.objectCode.insert(ptr, "JUMPZ %d" % (addr1+1))
             self.writeln('LABEL')
+            self.symbolTables.pop()
         elif val == 'while':
+            self.symbolTables.append({});
             addr = len(self.objectCode)
             self.C(subtree.children[1])
             ptr = len(self.objectCode)
@@ -95,33 +98,47 @@ class OCG:
             self.writeln('LABEL')
             addr = len(self.objectCode)
             self.objectCode.insert(ptr, "JUMPZ %d" % (addr+1))
+            self.symbolTables.pop()
         elif val == 'begin':
+            self.symbolTables.append({})
             self.SL(subtree.children[1])
+            self.symbolTables.pop()
         
     def D(self, subtree):
         # Add to symbol table: <id>: (<memAddr>, <type>)
         type = subtree.children[0][1]
-        self.symbolTable[ subtree.children[1][1] ] = ( self.memoryCounter, type )
+        topTable = self.symbolTables[len(self.symbolTables)-1]
+        if subtree.children[1][1] in topTable:
+            self.writeError("'%s' has already been declared" % subtree.children[1][1])
+        topTable[ subtree.children[1][1] ] = ( self.memoryCounter, type )
         self.memoryCounter += 1
         if subtree.children[2] != '<empty>':
             self.MI( subtree.children[2], type )
         
     def MI(self, subtree, type):
-        self.symbolTable[ subtree.children[1][1] ] = ( self.memoryCounter, type )
+        topTable = self.symbolTables[len(self.symbolTables)-1]
+        if subtree.children[1][1] in topTable:
+            self.writeError("'%s' has already been declared" % subtree.children[1][1])
+        topTable[ subtree.children[1][1] ] = ( self.memoryCounter, type )
         self.memoryCounter += 1
         if subtree.children[2] != '<empty>':
             self.MI( subtree.children[2], type )
         
     def A(self, subtree):
         tmpID = subtree.children[0][1]
-        if tmpID in self.symbolTable:
-            tmpMemAddr = self.symbolTable[ tmpID ][0]
-            type = self.E( subtree.children[2] )
-            if type != self.symbolTable[ tmpID ][1]:
-                self.writeError("Type mismatch: Expecting a %s value, but instead got a %s" % (self.symbolTable[tmpID][1], type))
-            self.writeln("POPM %d" % tmpMemAddr)
-        else: #Undeclared 
-            self.writeError("Undeclared identifier: '%s'" % tmpID)
+        index = len(self.symbolTables)-1;
+        while index >= 0:
+            if tmpID in self.symbolTables[index]:
+                tmpMemAddr = self.symbolTables[index][ tmpID ][0]
+                type = self.E( subtree.children[2] )
+                if type != self.symbolTables[index][ tmpID ][1]:
+                    self.writeError("Type mismatch: Expecting a %s value, but instead got a %s" % (self.symbolTables[index][tmpID][1], type))
+                self.writeln("POPM %d" % tmpMemAddr)
+                return self.symbolTables[index][ tmpID ][1]
+            else:
+                index -= 1;
+        #Undeclared 
+        self.writeError("Undeclared identifier: '%s'" % tmpID)
         
     #Leave results in stack
     def E(self, subtree, lastOp=None):
@@ -160,12 +177,16 @@ class OCG:
             return self.E(subtree.children[1])
         elif node[0] == 'IDENTIFIER':
             tmpID = node[1]
-            if tmpID in self.symbolTable:
-                tmpMemAddr = self.symbolTable[ tmpID ][0]
-                self.writeln('PUSHM %d' % tmpMemAddr)
-                return self.symbolTable[ tmpID ][1]
-            else: #Undeclared 
-                self.writeError("Undeclared identifier: '%s'" % tmpID)
+            index = len(self.symbolTables)-1;
+            while index >= 0:
+                if tmpID in self.symbolTables[index]:
+                    tmpMemAddr = self.symbolTables[index][ tmpID ][0]
+                    self.writeln('PUSHM %d' % tmpMemAddr)
+                    return self.symbolTables[index][ tmpID ][1]
+                else:
+                    index -= 1;
+            #Undeclared 
+            self.writeError("Undeclared identifier: '%s'" % tmpID)
         elif node[0] == 'INTEGER':
             self.writeln('PUSHI %s' % node[1])
             return 'int'
@@ -197,7 +218,7 @@ class OCG:
             self.writeln(RELOP_TO_CODE[tmpRelop])
 
 
-def printCode(objectCode, symbolTable):
+def printCode(objectCode, symbolTables):
     #Print object code
     lineCounter = 1;
     for line in objectCode:
@@ -207,8 +228,9 @@ def printCode(objectCode, symbolTable):
     print("\nSymbol Table")
     print("%16s | %16s | %5s" % ("Identifier", "Memory Address", "Type"))
     print((17*"-")+"|"+(18*"-")+"|"+(5*"-"))
-    for id in symbolTable:
-        print("%16s | %16s | %5s" % (id, symbolTable[id][0], symbolTable[id][1]))
+    globalTable = symbolTables[0]
+    for id in globalTable:
+        print("%16s | %16s | %5s" % (id, globalTable[id][0], globalTable[id][1]))
     
         
 
@@ -244,14 +266,14 @@ def main():
                 print("\tDefaulting to standard output.")
 
     objectCode = []
-    symbolTable = {}
+    symbolTables = [{}]
     #Perform syntax analysis on all input files
     for filename in files:
-        tmpOCG = OCG(filename, outFile, objectCode, symbolTable)
+        tmpOCG = OCG(filename, outFile, objectCode, symbolTables)
         tmpOCG.generate()
-        objectCode, symbolTable = tmpOCG.close()
+        objectCode, symbolTables = tmpOCG.close()
         #print(objectCode)
-    printCode(objectCode, symbolTable)
+    printCode(objectCode, symbolTables)
         
 
 
