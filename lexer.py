@@ -10,7 +10,7 @@ SYMBOL_MAP = {
     "int": 1, "float":1, "bool":1, "True":1, "False":1,
     "if":1, "else":1, "then":1, "endif":1, "endelse":1,
     "while":1, "whileend":1, "do":1, "enddo":1, "for":1,
-    "endfor":1, "STDinput":1, "STDoutput":1, "and":1, "or":1,
+    "endfor":1, "input":1, "output":1, "and":1, "or":1,
     "not":1,
     
     #Separators

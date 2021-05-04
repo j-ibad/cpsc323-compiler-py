@@ -69,6 +69,7 @@ class OCG:
             val = subtree.children[0][1]
         else:
             val = subtree.children[0].val
+        
         if val == 'D':
             self.D(subtree.children[0])
         elif val == 'A':
@@ -103,6 +104,22 @@ class OCG:
             self.symbolTables.append({})
             self.SL(subtree.children[1])
             self.symbolTables.pop()
+        elif val == 'input':
+            self.writeln('STDIN')
+            tmpID = subtree.children[2][1]
+            index = len(self.symbolTables)-1;
+            while index >= 0:
+                if tmpID in self.symbolTables[index]:
+                    tmpMemAddr = self.symbolTables[index][ tmpID ][0]
+                    self.writeln("POPM %d" % tmpMemAddr)
+                    return self.symbolTables[index][ tmpID ][1]
+                else:
+                    index -= 1;
+            #Undeclared 
+            self.writeError("Undeclared identifier: '%s'" % tmpID)
+        elif val == 'output':
+            self.E( subtree.children[2] );
+            self.writeln('STDOUT')
         
     def D(self, subtree):
         # Add to symbol table: <id>: (<memAddr>, <type>)

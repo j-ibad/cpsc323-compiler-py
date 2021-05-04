@@ -297,6 +297,31 @@ class Parser:
                     self.printError('Expected keyword "whileend" after statement-list')
             else:   #ERROR: should have "do"
                 self.printError('Expected keyword "do" before statement-list')
+        elif self.token[1] == 'input':
+            currNode.addChild( self.token )
+            self.nextToken()
+            currNode.addChild( self.token )
+            if self.token[1] != '(':
+                self.printUnexpectedError("Expected SEPARATOR '('.")
+            self.nextToken()
+            currNode.addChild( self.token )
+            if self.token[0] != 'IDENTIFIER':
+                self.printUnexpectedError("Expected IDENTIFIER.")
+            self.nextToken()
+            currNode.addChild( self.token )
+            if self.token[1] != ')':
+                self.printUnexpectedError("Expected SEPARATOR ')'.")
+        elif self.token[1] == 'output':
+            currNode.addChild( self.token )
+            self.nextToken()
+            currNode.addChild( self.token )
+            if self.token[1] != '(':
+                self.printUnexpectedError("Expected SEPARATOR '('.")
+            currNode.addChild( self.expression() )
+            self.nextToken()
+            currNode.addChild( self.token )
+            if self.token[1] != ')':
+                self.printUnexpectedError("Expected SEPARATOR ')'.")
         else:   #ERROR: Next token does not form a statement
             self.printUnexpectedError(' Was expecting a statement.')
         return currNode
@@ -390,7 +415,7 @@ class Parser:
         self.nextToken()
         currNode.addChild( self.token )
         self.flushPrintBuffer()
-        print("\t<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False'")
+        print("\t<Factor> -> '(' <Expression> ')' | <ID> | ('+' | '-')?(<FLOAT> | ('.')?<INT>) | 'True' | 'False' | input(ID) | output(E)")
         if self.token[1] == '(':
             currNode.addChild( self.expression() )
             self.nextToken()
