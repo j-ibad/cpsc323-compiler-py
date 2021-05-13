@@ -1,0 +1,6 @@
+if(True) then
+	int num;
+	num = 1;
+endif
+
+output(num);

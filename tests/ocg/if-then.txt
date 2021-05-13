@@ -10,3 +10,13 @@ if(num > nu2m) then
 else
 	large$ = nu2m;
 endif
+
+output( num );
+
+if( num <= nu2m) then
+	output(num);
+else
+	output(nu2m);
+endif
+
+output(large$);
